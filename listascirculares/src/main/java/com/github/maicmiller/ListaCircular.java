@@ -69,4 +69,16 @@ public class ListaCircular<T> {
         return this.tamanhoLista;
     }
 
+    @Override
+    public String toString() {
+        String strRetorno = "";
+
+        No<T> noAuxiliar = this.cauda; // Para começar imprimir pela cauda...
+        for(int i = 0; i < this.size(); i++){ // vamos percorrer a lista...
+            strRetorno += "[No{conteudo" + noAuxiliar.getConteudo() + "}]--->";
+            noAuxiliar = noAuxiliar.getNoProximo();
+        }
+        strRetorno += this.size() != 0 ? "Referencia ao início" : "[]"; // Se a lista estiver vazia,
+        return strRetorno;
+    }
 }
