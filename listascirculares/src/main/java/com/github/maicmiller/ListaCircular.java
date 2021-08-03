@@ -78,7 +78,7 @@ public class ListaCircular<T> {
             strRetorno += "[No{conteudo" + noAuxiliar.getConteudo() + "}]--->";
             noAuxiliar = noAuxiliar.getNoProximo();
         }
-        strRetorno += this.size() != 0 ? "Referencia ao início" : "[]"; // Se a lista estiver vazia,
+        strRetorno += this.size() != 0 ? "(Referencia ao início)" : "[] <- Esta lista está vazia!"; // Se a lista estiver vazia,
         return strRetorno;
     }
 }
