@@ -6,6 +6,26 @@ public class ListaCircular<T> {
     private No<T> cauda;
     private int tamanhoLista;
 
+    public ListaCircular() {
+        this.cabeca = null;
+        this.cauda = null;
+        this.tamanhoLista = 0;
+    }
+
+    public void add(T conteudo){
+        No<T> novoNo = new No<>(conteudo);
+        if (this.tamanhoLista == 0){ // Vamos testar se alista está vazia
+            this.cabeca = novoNo;
+            this.cauda = this.cabeca; // Se alista está vazia estamos adicionando a referencia da cabeça na cauda...
+            this.cabeca.setNoProximo(cauda); // Inserindo a referencia de próxima nó da cabeça  para a calda...
+        }else{
+            novoNo.setNoProximo(this.cauda); // Se não vamos, inserir o nó no final da calda...
+            this.cabeca.setNoProximo(novoNo); //  Agora a cabeça vai apontar para o novo nó (o atual)...
+            this.cauda = novoNo; // E a referencia de cauda é o nó inserido atualmente...
+        }
+        this.tamanhoLista++; // Incrementando o tamanho da lista...
+    }
+
     public void remove(int index){
         if (index >= this.tamanhoLista)
             throw new IndexOutOfBoundsException("O índice é maior que o tamanho da lista");
